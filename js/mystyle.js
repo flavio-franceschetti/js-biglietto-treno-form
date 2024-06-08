@@ -15,30 +15,35 @@
 //recupero il bottone da cliccare dall'html
 const submitBtn = document.querySelector(".submit");
 
-//dichiarazione della variabile final price
-let finalPrice, userName, userAge, travelKm, travelPrice, capNum, numCarrozza;
-
 //creo un addeventlistener click sul botttone con la funzione all interno
 submitBtn.addEventListener("click", function () {
+  //
+  event.preventDefault();
+
   //chiedo il nome all utente
-  userName = document.getElementById("userName").value;
+  let userName = document.getElementById("userName").value;
   console.log("Nome passeggero: " + userName);
 
+  //dichiarazione della variabile final price
+  let finalPrice;
+
   //Chiedo l'età al passeggero
-  userAge = document.getElementById("age").value;
+  let userAge = document.getElementById("age");
   console.log("Età del passeggero: " + userAge);
+  //value of userAge
+  let userAgeValue = userAge.value;
 
   //Chiedo chilometri che deve percorrere
-  travelKm = document.getElementById("km").value;
+  let travelKm = document.getElementById("km").value;
   console.log("Chilometri che vanno percorsi: " + travelKm);
 
   //Calcolo il costo totale del viaggio totale km * 0,21€
-  travelPrice = travelKm * 0.21;
+  let travelPrice = travelKm * 0.21;
   travelPrice = parseFloat(travelPrice.toFixed(2));
   console.log("Prezzo totale senza sconti: " + travelPrice);
 
-  //Togliamo il 20% da costo del biglietto ai ragazzi >18
-  if (userAge < 18) {
+  //Togliamo il 20% da costo del biglietto ai ragazzi > 18
+  if (userAgeValue === "minorenne") {
     //calcolo dello sconto
     let discount20 = (travelPrice * 20) / 100;
     discount20 = parseFloat(discount20.toFixed(2));
@@ -53,7 +58,7 @@ submitBtn.addEventListener("click", function () {
     );
 
     //Togliamo il 40% dal costo del biglietto alle persone over 65
-  } else if (userAge >= 65) {
+  } else if (userAgeValue === "over65") {
     //calcolo dello sconto
     let discount40 = (travelPrice * 40) / 100;
     discount40 = parseFloat(discount40.toFixed(2));
@@ -71,19 +76,21 @@ submitBtn.addEventListener("click", function () {
     finalPrice = travelPrice;
     console.log("Prezzo finale: " + finalPrice);
   }
+
   //cap casuale
-  capNum = Math.floor(Math.random(10000) * 99999);
+  let capNum = Math.floor(Math.random() * 90000) + 10000;
   console.log("Numero del CAP casuale: " + capNum);
+
   //numero carrrozza casuale
-  numCarrozza = Math.floor(Math.random() * 10) + 1;
+  let numCarrozza = Math.floor(Math.random() * 10) + 1;
   console.log("Numero della carrozza casuale: " + numCarrozza);
 
   //STAMPIAMO NELL HTML IL PREZZO FINALE
-  document.querySelector(".finalPrice").innerText = "€ " + finalPrice;
+  document.querySelector(".finalPrice").innerHTML = "€ " + finalPrice;
   //STAMPIAMO NELL HTML IL IL NOME DEL PASSEGGERO
-  document.querySelector(".name").innerText = userName;
+  document.querySelector(".name").innerHTML = userName;
   //numero carrrozza casuale
-  document.querySelector(".carrozza").innerText = numCarrozza;
+  document.querySelector(".carrozza").innerHTML = numCarrozza;
   //cap casuale
-  document.querySelector(".name").innerText = capNum;
+  document.querySelector(".cap").innerHTML = capNum;
 });

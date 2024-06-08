@@ -7,18 +7,69 @@
     <title>Biglietto Treno Form</title>
   </head>
   <body>
-    <!-- input section -->
-    <form action="#">
-      <input id="userName" type="text" placeholder="Nome e cognome" />
-      <input id="age" type="number" placeholder="Scrivi la tua età" />
-      <input id="km" type="number" placeholder="km da percorrere" />
-      <button class="submit">Genera</button>
-    </form>
+    <div class="container">
+      <h2>CALCOLA IL PREZZO DEL TUO BIGLIETTO</h2>
+      <div class="card">
+        <!-- input section -->
+        <form action="#">
+          <!-- nome utente -->
+          <div class="row">
+            <div class="col">
+              <label for="userName">Nome e Cognome</label>
+              <input class="inputstyle" id="userName" type="text" />
+            </div>
+            <!-- km da percorrere -->
+            <div class="col">
+              <label for="km">Km da percorrere</label>
+              <input class="inputstyle" id="km" type="number" />
+            </div>
+            <!-- età -->
+            <div class="col">
+              <label for="age">Fascia di età</label>
+              <select class="inputstyle" name="age" id="age">
+                <option value="minorenne">Under 18</option>
+                <option value="maggiorenne">Over 18</option>
+                <option value="over65">Over 65</option>
+              </select>
+            </div>
+          </div>
 
-    <div class="finalPrice"></div>
-    <div class="name"></div>
-    <div class="carrozza"></div>
-    <div class="cap"></div>
+          <!-- bottone genera -->
+          <button class="submit">Genera</button>
+          <div class="caption-discount">
+            * 20&percnt; di sconto per i minori di 18 anni <br />
+            * 40&percnt; di sconto per gli over 65
+          </div>
+        </form>
+      </div>
+
+      <!-- DETTAGLI DEL BIGLIETTO STAMPATI -->
+      <h2>DETTAGLI BIGLIETTO</h2>
+      <div class="card">
+        <div class="row">
+          <!-- nome del passeggero -->
+          <div class="col">
+            <h3>Nome passeggero</h3>
+            <div class="name"></div>
+          </div>
+          <!-- numero della carrozza -->
+          <div class="col">
+            <h3>Numero carrozza</h3>
+            <div class="carrozza"></div>
+          </div>
+          <!-- il cap /zip -->
+          <div class="col">
+            <h3>CAP</h3>
+            <div class="cap"></div>
+          </div>
+          <!-- il costo finale del biglietto con i vari sconti -->
+          <div class="col">
+            <h3>Costo Biglietto</h3>
+            <div class="finalPrice"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- SCRIPT JAVASCRIPT -->
     <script type="text/javascript" src="js/mystyle.js"></script>
   </body>
